@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://art/mainEnemy.png" type="Texture" id=1]
+[ext_resource path="res://mainEnemy.gd" type="Script" id=2]
+[ext_resource path="res://art/mainEnemy5.png" type="Texture" id=3]
+[ext_resource path="res://art/mainEnemy2.png" type="Texture" id=4]
+[ext_resource path="res://art/mainEnemy1.png" type="Texture" id=5]
+[ext_resource path="res://art/mainEnemy3.png" type="Texture" id=6]
+[ext_resource path="res://art/mainEnemy4.png" type="Texture" id=7]
+[ext_resource path="res://art/mainEnemyBig.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "entrance",
+"speed": 5.0
+} ]
+
+[node name="mainEnemy" type="RigidBody2D"]
+position = Vector2( -50, -400 )
+scale = Vector2( 1.5, 1.5 )
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 204.667, 160.667 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 1 )
+animation = "entrance"
+frame = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 130, 225, 129, 240, 137, 227, 153, 212, 160, 208, 168, 210, 173, 211, 186, 204, 193, 204, 201, 210, 227, 204, 235, 213, 248, 209, 261, 216, 268, 232, 267, 215, 259, 204, 256, 195, 231, 200, 228, 195, 212, 186, 197, 198, 177, 189, 165, 200, 151, 193, 140, 207, 135, 215 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 154, 135, 150, 143, 152, 150, 161, 158, 172, 164, 187, 164, 184, 161, 179, 155, 178, 151, 174, 150 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 239, 143, 233, 152, 222, 163, 225, 164, 238, 164, 246, 163, 258, 156, 271, 144, 273, 134, 271, 128, 266, 125, 246, 141 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+position = Vector2( 1.33334, 0.666626 )
+polygon = PoolVector2Array( 144, 117, 147, 117, 175, 107, 189, 107, 207, 112, 250, 103, 275, 102, 269, 98, 252, 98, 258, 92, 245, 96, 245, 87, 248, 82, 242, 87, 237, 97, 231, 85, 231, 78, 227, 88, 228, 100, 227, 100, 224, 92, 223, 101, 216, 92, 216, 84, 214, 73, 210, 64.6667, 205, 87, 204, 95, 202, 94, 199, 79, 188, 71, 189, 74, 195, 80, 194, 100, 193, 98, 191, 91, 189, 97, 187, 100, 184, 92, 177, 85, 160, 83, 156, 84, 164, 84, 176, 91, 182, 99, 181, 99, 180, 100, 174, 95, 176, 100, 172, 101, 155, 96, 153, 97, 164, 101, 166, 103, 167, 104, 160, 106, 151, 110 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 206.667, 170 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
